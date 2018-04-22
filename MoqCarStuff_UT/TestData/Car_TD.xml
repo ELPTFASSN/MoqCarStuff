@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TestData>
+    <Drive>
+        <Speed>60</Speed>
+        <ExpectedResult>-1</ExpectedResult>
+        <MaxAllowedSpeed>55</MaxAllowedSpeed>
+    </Drive>
+    
+    <Drive>
+        <Speed>40</Speed>
+        <ExpectedResult>1</ExpectedResult>
+        <MaxAllowedSpeed>55</MaxAllowedSpeed>
+    </Drive>
+    
+    <Drive>
+        <Speed>55</Speed>
+        <ExpectedResult>0</ExpectedResult>
+        <MaxAllowedSpeed>55</MaxAllowedSpeed>
+    </Drive>
+    
+    <!-- *************************** -->
+
+    <Options>
+        <Color>Black</Color>
+        <TireSet>Performance</TireSet>
+        <SportsPackage>true</SportsPackage>
+        <MaxAllowedSpeed>55</MaxAllowedSpeed>
+    </Options>
+
+    <Options>
+        <Color>Red</Color>
+        <TireSet>Performance</TireSet>
+        <SportsPackage>true</SportsPackage>
+        <MaxAllowedSpeed>55</MaxAllowedSpeed>
+    </Options>
+
+    <Options>
+        <Color>Blue</Color>
+        <TireSet>AllWeather</TireSet>
+        <SportsPackage>false</SportsPackage>
+        <MaxAllowedSpeed>55</MaxAllowedSpeed>
+    </Options>
+    
+</TestData>

@@ -1,0 +1,50 @@
+Use Nuget to install the MOQ library in the solution to start from scratch.
+
+The easiest way to do that is to right-click on the References node of the Test project 
+(Not the Library, but the Test Project).
+
+Select "Manage Nuget Packages"
+type MOQ in the search box (Making sure that you are pointing to "Nuget official package source")
+
+select MOQ by Daniel Cazzulino and install it.
+
+-----------------------------------------------------------
+
+With this solution, just compiling it should refresh the Nuget Package (MOQ in our case).
+
+"Moq" should be listed in the references of the test project.
+Also the Library being tested "MoqCarStuff" should be listed in the references of the test project.
+
+-----------------------------------------------------------
+
+My understanding is that there must be a paradigm shift in how code is written in order to avail oneself of Moq.
+Rather than writing code which makes calls on concrete objects, 
+code must call methods on objects represented by interfaces.
+This allows the object to be mocked. 
+
+Keep in mind the fact that the object being mocked cannot itself be tested.
+This is because the mocked object has absolutely NO implementation.
+Setup or SetupProperty (or both) must be called to give the mocked object something to return.
+
+For instance one would not call a commit on a profile object.
+
+IProfile profile = GetProfile(requestObject)
+
+profile.Property = new value
+
+profile.CommitChanges()
+
+Rather, something like a controller would be used to work with an IProfile object passed to it
+
+ProfileController controller = new ProfileController()
+IProfile iProfile = GetProfile(requestObject)
+
+controller.SetProperty(iProfile, "PropertyName", "NewValue")
+controller.CommitChanges(iProfile)
+
+var val = controller.GetProperty(iProperty, "PropertyName")
+
+Unit testing could then be done on ProfileController, without regard to the profile used, 
+such as by using a mocked profile object.
+
+http://windbg.org/
